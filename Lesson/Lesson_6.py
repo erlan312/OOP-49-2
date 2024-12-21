@@ -37,6 +37,36 @@ def get_all_users():
     else:
         print(f'Список пользователей пуст')
 
+def create_db():
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS users(
+        user_id INTERGER PRIMARY KEY AUTOINCREMENT,
+        fio VARCHAR (100) NOT NULL,
+        age INTEGER NOT NULL,
+        hobby TEXT  
+        )
+    """)
+
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS grades ( 
+        grade_id INTEGER PRIMARY KEY AUTOINCREMENT,
+        lesson VARCHAR (100),
+        grade INTEGER NOT NULL,
+        userid INTEGER,
+        FOREIGN KEY (userid) REFERENCES users(id),
+        )
+    
+    """)
+
+def add_grate():
+
+
+# add_user('Илья Муровец7', 26, 'Бегать')
+# add_user('John Doe5', 21, 'Спать')
+# add_user('Илья Муровец2', 22, 'Бегать')
+# add_user('John Doe1', 23, 'Спать')
+# add_user('Илья Муровец4', 20, 'Бегать')
+# add_user('John Doe3', 25, 'Спать')
 
 get_all_users()
 
